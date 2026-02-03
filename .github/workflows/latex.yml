@@ -8,10 +8,6 @@ on:
       - "**/*.sty"
       - "**/*.cls"
       - "**/*.bst"
-      - "**/*.bbx"
-      - "**/*.cbx"
-      - "**/*.lbx"
-      - "**/*.cfg"
       - "latexmkrc"
       - ".latexmkrc"
       - ".github/workflows/latex.yml"
@@ -25,15 +21,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # pLaTeX + dvipdfmx で latexmk を回して PDF を作る
       - name: Compile (pLaTeX -> DVI -> PDF)
         uses: xu-cheng/latex-action@v3
         with:
-          latexmk_use_platex: true
           root_file: Bell_Inequality_report.tex
-          # 既に latexmkrc / .latexmkrc がある場合は通常これで拾えます。
-          # オプションを足したい場合は args に追記できます。
-          # args: -interaction=nonstopmode -file-line-error
+          compiler: platex
+          args: -pdfdvi -file-line-error -halt-on-error -interaction=nonstopmode
 
       - name: Upload PDF as artifact
         uses: actions/upload-artifact@v4
