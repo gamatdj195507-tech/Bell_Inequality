@@ -1,0 +1,382 @@
+\documentclass[a4paper,10pt,dvipdfmx,titlepage]{jsarticle}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage{fancybox,ascmac}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{comment}
+\usepackage{textgreek}
+\usepackage{enumerate}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{here}
+
+\usepackage{tikz}
+\usepackage{quantikz}
+\usepackage[compat=1.1.0]{tikz-feynhand}
+\usepackage{xcolor}
+\usetikzlibrary{intersections,calc,arrows.meta,decorations.markings,decorations.pathmorphing,patterns}
+
+\usepackage{tcolorbox}
+\usepackage{ascolorbox}
+\tcbuselibrary{raster,skins,xparse,breakable,theorems}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert} % | | absolute value
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert} % || || norm
+\DeclarePairedDelimiter{\rbra}{\lparen}{\rparen} % () round brackets
+\DeclarePairedDelimiter{\cbra}{\lbrace}{\rbrace} % {} curly brackets
+\DeclarePairedDelimiter{\sbra}{\lbrack}{\rbrack} % [] square brackets
+\DeclarePairedDelimiter{\abra}{\langle}{\rangle} % < > angle brackets
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor} % floor function
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % ceil function
+
+\newcommand{\densope}{\hat{\rho}}
+\renewcommand{\ket}[1]{|#1\rangle}
+\renewcommand{\bra}[1]{\langle#1|}
+\renewcommand{\braket}[2]{\langle#1|#2\rangle}
+\newcommand{\bracket}[3]{\langle#1|#3|#2\rangle}
+\newcommand{\vb}[1]{\bm#1}
+\newcommand{\tr}[2]{\mathrm{Tr}_\mathrm{#1}\left[#2\right]}
+\newcommand{\id}[1]{\mathrm{id}_\mathrm{#1}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Exp}[1]{\exp\left[#1\right]}
+\newcommand{\arccot}[1]{\mathrm{arccot}\left(#1\right)}
+\newcommand{\dv}[2]{\dfrac{\mathrm{d}#1}{\mathrm{d}#2}}
+\newcommand{\pdv}[2]{\dfrac{\partial#1}{\partial#2}}
+\newcommand{\ddv}[2]{\dfrac{\mathrm{d}^2#1}{\mathrm{d}{#2}^2}}
+\newcommand{\pddv}[2]{\dfrac{\mathrm{d}^2#1}{\mathrm{d}{#2}^2}}
+\newcommand{\supp}[1]{\mathrm{supp}\sbra*{#1}}
+\newcommand{\rank}[1]{\mathrm{rank}\sbra*{#1}}
+
+\renewcommand{\dim}[1]{\mathrm{dim}\mathcal{#1}}
+\newcommand{\dlt}[1]{\varDelta{#1}}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+\newcommand{\boh}[2]{\mathcal{B}\rbra*{\mathcal{#2}^{\mathrm{#1}}}}
+\newcommand{\soh}[2]{\mathcal{S}\rbra*{\mathcal{#2}^{\mathrm{#1}}}}
+
+\newcommand{\defarrow}{\stackrel{\mathrm{def}}{\Longleftrightarrow}}
+\newcommand{\nsubset}{\cancel{\subset}}
+\newcommand{\nsupset}{\cancel{\supset}}
+
+\DeclareMathOperator*{\res}{Res}
+\DeclareMathOperator*{\internal}{int}
+\DeclareMathOperator*{\prodtop}{\#}
+
+\newcommand{\kiaratiara}{(\text{\raisebox{0.5ex}[0ex][0ex]{\(\cdot\)}}\text{\textomega}\text{\raisebox{0.5ex}[0ex][0ex]{\(\cdot\)}}~\text{\small{三}}~{}\text{\raisebox{0.5ex}[0ex][0ex]{\(\cdot\)}}\text{\textomega}\text{\raisebox{0.5ex}[0ex][0ex]{\(\cdot\)}})\text{\:\!\scalebox{0.5}[1]{フンフン}}}
+\renewcommand{\qedsymbol}{\(\kiaratiara\)}
+
+\numberwithin{equation}{section}
+\renewcommand{\eqref}[1]{(\ref{#1})式}
+
+\newcommand{\figref}[1]{\textbf{図}\ref{#1}}
+\newcommand{\tabref}[1]{\textbf{表}\ref{#1}}
+
+\newcommand{\secref}[1]{\ref{#1}}
+\newcommand{\subsecref}[1]{\ref{#1}}
+
+\usepackage{titlesec}
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+
+
+\tcbset{blackbox/.style={enhanced,
+colframe=black!100,colback=black!10!white,sharp corners=downhill,
+title style={left color=black,right color=black!5!white}
+}
+}
+\tcbset{redbox/.style={enhanced,
+colframe=red!100,colback=red!10!white,sharp corners=downhill,
+title style={left color=red,right color=red!5!white}
+}
+}
+
+% tcolorboxスタイルの定義
+\tcbset{
+  partbox/.style={
+    enhanced,
+    colback=white,
+    colframe=black,
+    boxrule=2pt,
+    sharp corners,
+    enlarge top by=2mm,
+    top=4mm,
+    breakable,
+    % 枠の塗りつぶしと細枠の一筆書き調整
+    underlay unbroken={
+      % 四隅の黒い塗りつぶしの描画
+      \fill[black] ([xshift=2pt,yshift=-2pt]frame.north west) -- ++ (0pt,-8pt)
+      arc [start angle=270, end angle=360, radius=8pt] -- cycle;
+      \fill[black] ([xshift=-2pt,yshift=-2pt]frame.north east) -- ++ (-8pt,0pt)
+      arc [start angle=180, end angle=270, radius=8pt] -- cycle;
+      \fill[black] ([xshift=-2pt,yshift=2pt]frame.south east) -- ++ (0pt,8pt)
+      arc [start angle=90, end angle=180, radius=8pt] -- cycle;
+      \fill[black] ([xshift=2pt,yshift=2pt]frame.south west) -- ++ (8pt,0pt)
+      arc [start angle=0, end angle=90, radius=8pt] -- cycle;
+
+      % 細い枠線を黒い塗りつぶしにかからないように描画
+      \draw[black!50!white, line width=0.5pt]
+      ([yshift=-4pt]frame.north west) ++(12pt,0pt) --
+      ([xshift=-12pt,yshift=-4pt]frame.north east)
+      arc [start angle=180, end angle=270, radius=8pt] -- ([xshift=-4pt,yshift=12pt]frame.south east)
+      arc [start angle=90, end angle=180, radius=8pt] -- ([xshift=12pt,yshift=4pt]frame.south west)
+      arc [start angle=0, end angle=90, radius=8pt] -- ([xshift=4pt,yshift=-12pt]frame.north west)
+      arc [start angle=270, end angle=360, radius=8pt] -- cycle;
+    }
+  }
+}
+
+\tcbset{
+  titlebox/.style={
+    enhanced, 
+    frame hidden, 
+    interior hidden,
+    overlay={
+      % 黒く塗りつぶされた四隅の正方形
+      \foreach \corner in {(frame.south west), (frame.south east), (frame.north west), (frame.north east)} {
+        \fill[black] \corner ++(-2pt,-2pt) rectangle ++(4pt,4pt);
+      }
+      % 黒の枠線（四隅の正方形の中心を頂点とする長方形）
+      \draw[black, line width=0.8pt] 
+        (frame.south west) rectangle (frame.north east);
+      % グレーの枠線（四隅の正方形と交わらない）
+      \draw[gray!70, line width=0.5pt] 
+        ([shift={(5pt,5pt)}]frame.south west) -- ([shift={(-5pt,5pt)}]frame.south west) --
+        ([shift={(-5pt,-5pt)}]frame.north west) -- ([shift={(5pt,-5pt)}]frame.north west) --
+        ([shift={(5pt,5pt)}]frame.north west) -- ([shift={(-5pt,5pt)}]frame.north east) --
+        ([shift={(-5pt,-5pt)}]frame.north east) -- ([shift={(5pt,-5pt)}]frame.north east) --
+        ([shift={(5pt,5pt)}]frame.south east) -- ([shift={(-5pt,5pt)}]frame.south east) --
+        ([shift={(-5pt,-5pt)}]frame.south east) -- ([shift={(5pt,-5pt)}]frame.south west) --cycle;
+    }
+  }
+}
+
+% PartBoxの定義
+\newcommand{\PartBox}[1]{
+  \stepcounter{part} % パート番号を進める
+  \setcounter{section}{0} % セクション番号をリセット
+  \addcontentsline{toc}{part}{第\thepart 部\quad#1} % 目次にパートを追加
+  \markboth{第\thepart 部\quad#1}{} % ヘッダーにパート名を反映
+
+  % tcolorboxでパート名を囲む
+  \begin{tcolorbox}[titlebox]
+    \centering \LARGE \quad#1
+  \end{tcolorbox}
+}
+
+\usepackage{fancyhdr}
+\usepackage{tocloft}   % 目次のスタイルをカスタマイズするためのパッケージ
+% 目次ページ用のカスタムタイトル
+\newcommand{\customcontentsname}{
+    \begin{center}
+        \textbf{\huge contents} \\[0.5em]
+        \hrule
+    \end{center}
+}
+\newcommand{\customabstractname}{
+    \begin{center}
+        \Large abstract \\[0.5em]
+    \end{center}
+}
+
+\renewcommand{\contentsname}{\customcontentsname}
+\renewcommand{\abstractname}{\customabstractname}
+
+\renewcommand{\labelitemi}{\(\diamondsuit\)}
+\renewcommand{\theenumi}{(\arabic{enumi})}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper} %
+\hypersetup{%
+hidelinks, %印刷用のときはコメントアウト
+hypertexnames=false,%
+setpagesize=true,%
+bookmarks=true,%
+bookmarksdepth=tocdepth,%
+bookmarksnumbered=true,%
+colorlinks=false,%
+}
+
+\usepackage{cleveref}
+\newcommand{\kara}{}
+
+% 共通スタイル: 枠なし・タイトル同一行
+\tcbset{
+  myplainstyle/.style={
+    enhanced,
+    breakable,
+    frame hidden,
+    interior hidden,
+    boxrule=0pt,
+    colframe=white,
+    colback=white,
+    colbacktitle=white,
+    coltitle=black,
+    coltext=black,
+    fonttitle=\bfseries,
+    title style={},
+    boxsep=0pt,
+    left=0pt, right=0pt, top=0pt, bottom=0pt,
+    toptitle=0pt, bottomtitle=0pt,
+    before skip=6pt, after skip=6pt,
+    before upper=\ignorespaces,
+    after upper=\par,
+    title after break={},
+    attach title to upper={},
+    separator sign none
+  }
+}
+
+% ------------------------------------------------------------
+% 共通スタイル: 左側に黒い縦線のみ
+\tcbset{
+  myleftbarstyle/.style={
+    enhanced,
+    breakable,
+    boxrule=0.5pt,          % 線の太さ
+    frame hidden,
+    borderline west={1pt}{0pt}{black}, % ← 左側の縦線を追加
+    interior hidden,
+    colframe=black,
+    colback=white,
+    colbacktitle=white,
+    coltitle=black,
+    coltext=black,
+    fonttitle=\bfseries,
+    title style={},
+    boxsep=0pt,
+    left=6pt, right=0pt, top=0pt, bottom=0pt, % 左に余白を確保
+    toptitle=0pt, bottomtitle=0pt,
+    before skip=6pt, after skip=6pt,
+    before upper=\ignorespaces,
+    after upper=\par,
+    title after break={},
+    attach title to upper={},
+    separator sign none
+  }
+}
+
+% ------------------------------------------------------------
+\newtcolorbox[auto counter, number within=section, crefname = {Def.}{Defs.}]{definition}[3][]{
+  myleftbarstyle,
+  title=定義~\thetcbcounter\if #2\kara \else（#2） \fi~,
+  #1,
+  label=def:#3
+}
+\newcommand{\defref}[1]{\textbf{定義\ref{#1}}}
+
+% ------------------------------------------------------------
+\newtcolorbox[auto counter, use counter from=definition, crefname = {Thm.}{Thms.}]{theorem}[3][]{
+  myleftbarstyle,
+  title=定理~\thetcbcounter\if #2\kara \else（#2） \fi~,
+  #1,
+  label=thm:#3
+}
+\newcommand{\thmref}[1]{\textbf{定理\ref{#1}}}
+
+% ------------------------------------------------------------
+\newtcolorbox[auto counter, use counter from=definition, crefname = {Prop.}{Props.}]{proposition}[3][]{
+  myleftbarstyle,
+  title=命題~\thetcbcounter\if #2\kara \else（#2） \fi~,
+  #1,
+  label=prop:#3
+}
+\newcommand{\propref}[1]{\textbf{命題\ref{#1}}}
+
+% ------------------------------------------------------------
+\newtcolorbox[auto counter, use counter from=definition, crefname = {Lem.}{Lems.}]{lemma}[3][]{
+  myleftbarstyle,
+  title=補題~\thetcbcounter\if #2\kara \else（#2） \fi~,
+  #1,
+  label=lemma:#3
+}
+\newcommand{\lemmaref}[1]{\textbf{補題\ref{#1}}}
+
+% ------------------------------------------------------------
+\newtcolorbox[auto counter, use counter from=definition, crefname = {Cor.}{Cors.}]{corollary}[3][]{
+  myleftbarstyle,
+  title=系~\thetcbcounter\if #2\kara \else（#2） \fi~,
+  #1,
+  label=cor:#3
+}
+\newcommand{\corref}[1]{\textbf{系\ref{#1}}}
+
+% ------------------------------------------------------------
+\newtcolorbox[auto counter, use counter from=definition, crefname = {Rem.}{Rems.}]{remark}[3][]{
+  myleftbarstyle,
+  title=注釈~\thetcbcounter\if #2\kara \else（#2） \fi~,
+  #1,
+  label=rem:#3
+}
+\newcommand{\remref}[1]{\textbf{注釈\ref{#1}}}
+
+% ------------------------------------------------------------
+\newtcolorbox[auto counter, use counter from=definition, crefname = {Axiom.}{Axioms.}]{axiom}[3][]{
+  myleftbarstyle,
+  title=公理~\thetcbcounter\if #2\kara \else（#2） \fi~,
+  #1,
+  label=axiom:#3
+}
+\newcommand{\axiomref}[1]{\textbf{公理\ref{#1}}}
+
+\newtcolorbox[auto counter, use counter from=definition, crefname = {Problem.}{Problems.}]{problem}[3][]{
+  myleftbarstyle,
+  title=problem~\thetcbcounter\if #2\kara \else（#2） \fi~~,
+  #1,
+  label=problem:#3
+}
+\newcommand{\problemref}[1]{\textbf{problem~\ref{#1}}}
+
+\begin{document}
+
+\title{Compton散乱を用いたBellの不等式の破れの検証(仮) \\%
+{\large 京都大学理学部物理科学系 2025年度課題研究P1}}
+\author{市川周, 小林悠人, 下釜翔悟, 山田大樹}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+    ここに概要を書く.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{イントロダクション}
+本実験では, \(\gamma\)線Compton散乱を用いてBellの不等式の破れ\cite{EPR paradox}を検証する.
+
+\section{理論}
+
+\subsection{Bellの不等式の破れ}
+\subsubsection{量子力学と隠れた変数理論}
+A. Einstein, B. Podolsky, N. Rosen により提唱されたEPR相関は非局所的であり, 量子力学特有のものであることが知られている. 
+しかし, 隠れた変数理論の導入により, 相関
+
+\subsubsection{Bellの不等式の破れ}
+
+\subsection{Klein-Nishina formula}
+
+\section{実験原理}
+
+\section{実験方法}
+
+\section{解析}
+
+\section{考察}
+
+\section{謝辞}
+ありがとうございました！
+
+\begin{thebibliography}{999}
+    \bibitem[EPR]{EPR paradox} Einstein-Podolsky-Rosens' Paradox
+\end{thebibliography}
+
+
+
+%% おーい！！元気？？僕は元気だよ。レポート書かないとだめだね。頑張ろう頑張ろう。
+%% いつかTexの自分用の設定を構築したい。チャッピーと一緒にする。
+%% うんち
+
+\end{document}
