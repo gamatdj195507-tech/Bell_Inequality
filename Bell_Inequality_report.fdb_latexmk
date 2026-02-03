@@ -1,16 +1,16 @@
 # Fdb version 4
-["dvipdf"] 1770092055.978 "Bell_Inequality_report.dvi" "Bell_Inequality_report.pdf" "Bell_Inequality_report" 1770092058.19616 0
-  "Bell_Inequality_report.dvi" 1770092055 9024 898b8a7b6de24d747c6c9b7274a041c1 "latex"
+["dvipdf"] 1770094611.79495 "Bell_Inequality_report.dvi" "Bell_Inequality_report.pdf" "Bell_Inequality_report" 1770094613.89476 0
+  "Bell_Inequality_report.dvi" 1770094611 9068 64dd800b4460510369cdb2d3b8d2748a "latex"
   (generated)
   "Bell_Inequality_report.pdf"
   (rewritten before read)
-["latex"] 1770092051.57277 "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" "Bell_Inequality_report.dvi" "Bell_Inequality_report" 1770092058.16912 0
-  "Bell_Inequality_report.aux" 1770092055 1661 9c0abd072c52fb8ee4e7832dad5ca131 "latex"
-  "Bell_Inequality_report.out" 1770092055 988 ee65b67e1f3aafe08f2e9b084ead97a2 "latex"
-  "Bell_Inequality_report.tex" 1770092049 13237 fe3331f04a26786d7f328a74ef698ef1 ""
-  "Bell_Inequality_report.toc" 1770092055 848 4a267380af554dd4af163689e19d8803 "latex"
-  "ascolorbox.sty" 1734368256 54446 103a2c190ea2229e814f63e75c5cc02c ""
-  "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" 1770092049 13237 fe3331f04a26786d7f328a74ef698ef1 ""
+["latex"] 1770094606.72554 "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" "Bell_Inequality_report.dvi" "Bell_Inequality_report" 1770094613.8805 0
+  "Bell_Inequality_report.aux" 1770094611 1661 9c0abd072c52fb8ee4e7832dad5ca131 "latex"
+  "Bell_Inequality_report.out" 1770094611 988 ee65b67e1f3aafe08f2e9b084ead97a2 "latex"
+  "Bell_Inequality_report.tex" 1770094599 13280 86ce3d04607e382a7f5b54f78d78b926 ""
+  "Bell_Inequality_report.toc" 1770094611 848 4a267380af554dd4af163689e19d8803 "latex"
+  "ascolorbox.sty" 1770094436 55390 103a2c190ea2229e814f63e75c5cc02c ""
+  "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" 1770094599 13280 86ce3d04607e382a7f5b54f78d78b926 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1714516962 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1714513425 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1714513425 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -310,7 +310,7 @@
   "c:/texlive/2024/texmf-dist/web2c/texmf.cnf" 1714513122 41983 7ec6bfd6bf34339a61f0f08f42298e60 ""
   "c:/texlive/2024/texmf-var/web2c/euptex/uplatex.fmt" 1714525329 8157330 9039b32077d8c4125d29249026b81295 ""
   "c:/texlive/2024/texmf.cnf" 1714525044 713 614551405fc44b98efbf516466e3c909 ""
-  "quantikz.sty" 1741520123 591 d2ccaa67b52582dcf602f349160f996f ""
+  "quantikz.sty" 1770094436 602 d2ccaa67b52582dcf602f349160f996f ""
   (generated)
   "Bell_Inequality_report.aux"
   "Bell_Inequality_report.dvi"
