@@ -1,0 +1,5 @@
+- name: Compile LaTeX (pLaTeX)
+  uses: xu-cheng/latex-action@v3
+  with:
+  latexmk_use_platex: true
+  root_file: Bell_Inequality_report.tex
