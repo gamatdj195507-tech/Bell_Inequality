@@ -1,16 +1,16 @@
 # Fdb version 4
-["dvipdf"] 1770094611.79495 "Bell_Inequality_report.dvi" "Bell_Inequality_report.pdf" "Bell_Inequality_report" 1770094613.89476 0
-  "Bell_Inequality_report.dvi" 1770094611 9068 64dd800b4460510369cdb2d3b8d2748a "latex"
+["dvipdf"] 1770096281.04437 "Bell_Inequality_report.dvi" "Bell_Inequality_report.pdf" "Bell_Inequality_report" 1770096283.14706 0
+  "Bell_Inequality_report.dvi" 1770096280 9224 202493d04c5c91fe86a813a41752fc75 "latex"
   (generated)
   "Bell_Inequality_report.pdf"
   (rewritten before read)
-["latex"] 1770094606.72554 "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" "Bell_Inequality_report.dvi" "Bell_Inequality_report" 1770094613.8805 0
-  "Bell_Inequality_report.aux" 1770094611 1661 9c0abd072c52fb8ee4e7832dad5ca131 "latex"
-  "Bell_Inequality_report.out" 1770094611 988 ee65b67e1f3aafe08f2e9b084ead97a2 "latex"
-  "Bell_Inequality_report.tex" 1770094599 13280 86ce3d04607e382a7f5b54f78d78b926 ""
-  "Bell_Inequality_report.toc" 1770094611 848 4a267380af554dd4af163689e19d8803 "latex"
+["latex"] 1770096276.36376 "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" "Bell_Inequality_report.dvi" "Bell_Inequality_report" 1770096283.11333 0
+  "Bell_Inequality_report.aux" 1770096280 1661 9c0abd072c52fb8ee4e7832dad5ca131 "latex"
+  "Bell_Inequality_report.out" 1770096280 988 ee65b67e1f3aafe08f2e9b084ead97a2 "latex"
+  "Bell_Inequality_report.tex" 1770096274 13372 80b26a9e7fa9c414aa384dace73e1eb2 ""
+  "Bell_Inequality_report.toc" 1770096280 848 4a267380af554dd4af163689e19d8803 "latex"
   "ascolorbox.sty" 1770094436 55390 103a2c190ea2229e814f63e75c5cc02c ""
-  "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" 1770094599 13280 86ce3d04607e382a7f5b54f78d78b926 ""
+  "c:/Users/gamat/OneDrive/デスクトップ/課題研究P1_Bell/Bell_Inequality_report.tex" 1770096274 13372 80b26a9e7fa9c414aa384dace73e1eb2 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1714516962 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1714513425 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1714513425 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
