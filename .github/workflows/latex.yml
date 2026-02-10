@@ -13,10 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX
+      - name: Compile LaTeX (pLaTeX + dvipdfmx)
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Bell_Inequality_report.tex
+          args: -pdfdvi -interaction=nonstopmode -file-line-error -halt-on-error
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
