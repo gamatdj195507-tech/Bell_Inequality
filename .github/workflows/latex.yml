@@ -1,16 +1,22 @@
-name: Build LaTeX PDF
+name: Build LaTeX PDF (auto for fork PR)
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
+
+  # fork PR でも承認なしで実行される（⚠ 危険）
+  pull_request_target:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      # ⚠ PR のコードをチェックアウトするために ref を明示
+      - name: Checkout PR code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Compile LaTeX (pLaTeX + dvipdfmx)
         uses: xu-cheng/latex-action@v3
