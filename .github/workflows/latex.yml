@@ -3,14 +3,11 @@ name: Build LaTeX PDF
 on:
   push:
     branches: [ "main" ]
-  pull_request:
+  pull_request_target:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    # ★ 追加：ハング防止（Docker pull / latexmk 無限待ち対策）
-    timeout-minutes: 20
 
     steps:
       - name: Checkout
