@@ -1,16 +1,27 @@
-name: Build LaTeX PDF
+name: Build LaTeX PDF (PR target)
 
 on:
+  pull_request_target:
   push:
     branches: [ "main" ]
-  pull_request_target:
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
-      - name: Checkout
+      - name: Checkout PR code
+        if: ${{ github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Checkout main
+        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v4
 
       - name: Compile LaTeX (pLaTeX + dvipdfmx)
