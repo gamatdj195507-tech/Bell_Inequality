@@ -17,7 +17,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Bell_Inequality_report.tex
-          args: -pdfdvi -interaction=nonstopmode -file-line-error -halt-on-error
+          compiler: latexmk
+          args: -pdfdvi -e '$latex="platex %O -interaction=nonstopmode -file-line-error -halt-on-error %S"' -e '$dvipdf="dvipdfmx %O -o %D %S"'
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
