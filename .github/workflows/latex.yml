@@ -1,17 +1,9 @@
-name: Compile LaTeX (pLaTeX)
+name: Build LaTeX PDF
 
 on:
   push:
-    paths:
-      - "**/*.tex"
-      - "**/*.bib"
-      - "**/*.sty"
-      - "**/*.cls"
-      - "**/*.bst"
-      - "latexmkrc"
-      - ".latexmkrc"
-      - ".github/workflows/latex.yml"
-  workflow_dispatch:
+    branches: [ "main" ]
+  pull_request:
 
 jobs:
   build:
@@ -21,15 +13,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Compile (pLaTeX -> DVI -> PDF)
+      - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Bell_Inequality_report.tex
-          compiler: platex
-          args: -pdfdvi -file-line-error -halt-on-error -interaction=nonstopmode
 
-      - name: Upload PDF as artifact
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: compiled-pdf
+          name: pdf
           path: Bell_Inequality_report.pdf
