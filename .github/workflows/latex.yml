@@ -1,27 +1,26 @@
-name: Build LaTeX PDF (auto for fork PR)
+name: Build LaTeX PDF
 
 on:
   push:
     branches: [ "main" ]
-
-  # fork PR でも承認なしで実行される（⚠ 危険）
-  pull_request_target:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    # ★ 追加：ハング防止（Docker pull / latexmk 無限待ち対策）
+    timeout-minutes: 20
+
     steps:
-      # ⚠ PR のコードをチェックアウトするために ref を明示
-      - name: Checkout PR code
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Compile LaTeX (pLaTeX + dvipdfmx)
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Bell_Inequality_report.tex
+          compiler: latexmk
           args: -pdfdvi -interaction=nonstopmode -file-line-error -halt-on-error
 
       - name: Upload PDF artifact
